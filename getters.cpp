@@ -1,20 +1,20 @@
 #include "globals.h"
 
-int getRandomColor(){
-  return possibleColors[random(0,4)];
+int getRandomColor() {
+  return possibleColors[random(0, 4)];
 }
 
-int getRandomColorAvailable(int availableColors[]){
+int getRandomColorAvailable(int availableColors[]) {
   int randomColor = 999;
-  while(randomColor == 999){
-    randomColor = availableColors[random(0,4)];
+  while (randomColor == 999) {
+    randomColor = availableColors[random(0, 4)];
   }
   return randomColor;
 }
 
 
-int getArraySize(int level){
-  switch(level){
+int getArraySize(int level) {
+  switch (level) {
     case 1:
       return LEVEL1;
     case 2:
