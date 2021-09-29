@@ -15,8 +15,8 @@ void setup() {
   pinMode(blueColorButton, INPUT);
   pinMode(yellowColorButton, INPUT);
 
-  pinMode(buzzer,OUTPUT);
-  
+  pinMode(buzzer, OUTPUT);
+
   Serial.begin(9600);
 }
 
@@ -30,12 +30,11 @@ void resetAll() {
 
 void loop() {
   // put your main code here, to run repeatedly:
- 
   int gameMode = selectGamemode();
   delay(1000);
   int level = selectLevel();
   delay(1000);
-  if(gameMode == 0 || level == 0)
+  if (gameMode == 0 || level == 0)
     generateSound(20, 8);
   else
     startGame(gameMode, level);
