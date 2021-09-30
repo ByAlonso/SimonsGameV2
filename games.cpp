@@ -179,7 +179,8 @@ void game3(int level) {
       userArray[j] = selectColor();
       playColor(userArray[j]);
       if (userArray[j] != machineArray[j]) {
-        //Borrar un color de la lista de colores
+        //Remove color from color list
+        //Should disable the color but idk how to do it
         for (int z = 0; z < 4; z++) {
           if (userArray[j] == availableColors[z])
             availableColors[z] = 999;
