@@ -6,7 +6,7 @@ int selectGamemode() {
   digitalWrite(redColor, HIGH);
   digitalWrite(greenColor, HIGH);
   digitalWrite(yellowColor, HIGH);
-  playStartMelody();
+  playWinMelody();
   while (digitalRead(redColorButton) == LOW && digitalRead(greenColorButton) == LOW && digitalRead(yellowColorButton) == LOW) {
     delay(10);
   }
