@@ -9,15 +9,6 @@ extern int counter;
 
 //TODO setup the lcd stuff
 
-/*extern int gameMode1;
-  extern int gameMode2;
-  extern int gameMode3;
-
-  extern int level1;
-  extern int level2;
-  extern int level3;
-  extern int level4;*/
-
 extern int redColor;
 extern int greenColor;
 extern int blueColor;

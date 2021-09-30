@@ -1,13 +1,4 @@
-#include "globals.h"
-
-/*int gameMode1 = 5;
-  int gameMode2 = 4;
-  int gameMode3 = 0;
-
-  int level1 = 5;
-  int level2 = 4;
-  int level3 = 0;
-  int level4 = 2;*/
+ #include "globals.h"
 
 int redColor = D3;
 int greenColor = D1;
