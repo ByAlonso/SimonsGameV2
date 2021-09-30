@@ -29,15 +29,12 @@ void resetAll() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   int gameMode = selectGamemode();
   delay(1000);
   int level = selectLevel();
   delay(1000);
-  if (gameMode == 0 || level == 0)
-    generateSound(20, 8);
-  else
-    startGame(gameMode, level);
+  if (gameMode != 0 && level != 0)
+    startGame(gameMode, level); 
   delay(5000);
   resetAll();
 }

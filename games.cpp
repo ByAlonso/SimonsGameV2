@@ -6,7 +6,7 @@ int selectGamemode() {
   digitalWrite(redColor, HIGH);
   digitalWrite(greenColor, HIGH);
   digitalWrite(yellowColor, HIGH);
-  playWinMelody();
+  playStartMelody();
   while (digitalRead(redColorButton) == LOW && digitalRead(greenColorButton) == LOW && digitalRead(yellowColorButton) == LOW) {
     delay(10);
   }
@@ -69,19 +69,15 @@ int selectColor() {
     delay(10);
   }
   if (digitalRead(greenColorButton) == HIGH) {
-    playColorSound(greenColor);
     return greenColor;
   }
   else if (digitalRead(yellowColorButton) == HIGH) {
-    playColorSound(yellowColor);
     return yellowColor;
   }
   else if (digitalRead(redColorButton) == HIGH) {
-    playColorSound(redColor);
     return redColor;
   }
   else if (digitalRead(blueColorButton) == HIGH) {
-    playColorSound(blueColor);
     return blueColor;
   }
   else
@@ -110,7 +106,7 @@ void gameWin() {
     digitalWrite(yellowColor, LOW);
     digitalWrite(redColor, LOW);
     digitalWrite(blueColor, LOW);
-    delay(1000);
+    delay(500);
   }
 }
 
@@ -126,9 +122,12 @@ void game1(int level) {
       userArray[j] = selectColor();
       //userArray[j] = machineArray[j];
       playColor(userArray[j]);
-      if (userArray[j] != machineArray[j])
+      if (userArray[j] != machineArray[j]){
+        playErrorMelody();
         endGame = true;
+      }  
     }
+    delay(300);
   }
   if (endGame) //If the user loses
     gameOver();
@@ -147,15 +146,18 @@ void game2(int level) {
       machineArray[i] = getRandomColor();
     else {
       machineArray[i] = selectColor();
-      playColor(userArray[i]);
+      playColor(machineArray[i]);
     }
     playSequence(machineArray, i);
     for (int j = 0; j <= i && !endGame; j++) {
       userArray[j] = selectColor();
       playColor(userArray[j]);
-      if (userArray[j] != machineArray[j])
+      if (userArray[j] != machineArray[j]){
+        playErrorMelody();
         endGame = true;
+      }  
     }
+    delay(300);
   }
   if (endGame) //If the user loses
     gameOver();
@@ -183,9 +185,11 @@ void game3(int level) {
             availableColors[z] = 999;
         }
         lives--;
-        i = 0;
+        playErrorMelody();
+        i = -1;
       }
     }
+    delay(300);
   }
 
   playWinMelody();
