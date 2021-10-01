@@ -1,6 +1,7 @@
 
 #include "getters.h"
 #include "outputs.h"
+#include "ThingSpeak.h"
 
 int selectGamemode() {
   digitalWrite(redColor, HIGH);
@@ -46,18 +47,22 @@ int selectLevel() {
   Serial.println("LEVEL SELECTED");
   if (digitalRead(greenColorButton) == HIGH) {
     playColorSound(greenColor);
+    maxCounter = getArraySize(1);
     return 1;
   }
   else if (digitalRead(yellowColorButton) == HIGH) {
     playColorSound(yellowColor);
+    maxCounter = getArraySize(2);
     return 2;
   }
   else if (digitalRead(redColorButton) == HIGH) {
     playColorSound(redColor);
+    maxCounter = getArraySize(3);
     return 3;
   }
   else if (digitalRead(blueColorButton) == HIGH) {
     playColorSound(blueColor);
+    maxCounter = getArraySize(4);
     return 4;
   }
   else
@@ -85,6 +90,9 @@ int selectColor() {
 }
 
 void gameOver() {
+  ThingSpeak.setField(2,maxCounter);
+  ThingSpeak.setField(1,counter);
+  ThingSpeak.writeFields(SECRET_ID, SECRET_API_WRITE);
   Serial.println("GAME OVER");
   digitalWrite(greenColor, LOW);
   digitalWrite(yellowColor, LOW);
@@ -94,6 +102,9 @@ void gameOver() {
 }
 
 void gameWin() {
+  ThingSpeak.setField(2,maxCounter);
+  ThingSpeak.setField(1,counter);
+  ThingSpeak.writeFields(SECRET_ID, SECRET_API_WRITE);
   Serial.println("GAME WIN");
   playWinMelody();
   for (int i = 0; i < 10; i++) {
@@ -120,13 +131,15 @@ void game1(int level) {
     playSequence(machineArray, i);
     for (int j = 0; j <= i && !endGame; j++) {
       userArray[j] = selectColor();
-      //userArray[j] = machineArray[j];
       playColor(userArray[j]);
+      
       if (userArray[j] != machineArray[j]){
         playErrorMelody();
         endGame = true;
-      }  
+      } 
+       
     }
+    counter++;
     delay(300);
   }
   if (endGame) //If the user loses
@@ -157,6 +170,7 @@ void game2(int level) {
         endGame = true;
       }  
     }
+    counter++;
     delay(300);
   }
   if (endGame) //If the user loses
@@ -190,6 +204,7 @@ void game3(int level) {
         i = -1;
       }
     }
+    counter++;
     delay(300);
   }
 
