@@ -1,4 +1,7 @@
 #include <Arduino.h>
+#include <ESP8266WiFi.h>
+#include <WiFiClient.h>
+
 #define LEVEL1 8
 #define LEVEL2 14
 #define LEVEL3 20
@@ -6,6 +9,7 @@
 #define MINIMAL_DURATION 4
 
 extern int counter;
+extern int maxCounter;
 
 //TODO setup the lcd stuff
 
@@ -22,6 +26,14 @@ extern int yellowColorButton;
 extern int possibleColors[4];
 
 extern int buzzer;
+
+extern char* SECRET_SSID;
+extern char* SECRET_PSW;
+extern long unsigned int SECRET_ID;
+extern char* SECRET_API_WRITE;
+extern char* SECRET_API_READ;
+
+extern WiFiClient  client;
 
 //NOTES
 
