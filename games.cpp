@@ -2,6 +2,7 @@
 #include "getters.h"
 #include "outputs.h"
 #include "ThingSpeak.h"
+#include "secrets.h"
 
 int selectGamemode() {
   digitalWrite(redColor, HIGH);

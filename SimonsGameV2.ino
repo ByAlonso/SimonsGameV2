@@ -3,6 +3,7 @@
 #include "outputs.h"
 #include <ESP8266WiFi.h>
 #include "ThingSpeak.h"
+#include "secrets.h"
 
 
 void handleGame() {
