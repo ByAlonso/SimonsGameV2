@@ -27,12 +27,6 @@ extern int possibleColors[4];
 
 extern int buzzer;
 
-extern char* SECRET_SSID;
-extern char* SECRET_PSW;
-extern long unsigned int SECRET_ID;
-extern char* SECRET_API_WRITE;
-extern char* SECRET_API_READ;
-
 extern WiFiClient  client;
 
 //NOTES
